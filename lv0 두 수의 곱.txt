@@ -1,0 +1,16 @@
+
+def solution(num1, num2):
+    answer = 0
+    answer = num1 * num2
+    return answer
+
+"""
+근데 다른 사람들 풀이가 너무 대박임 
+
+solution=lambda x,y:x*y
+
+solution = lambda num1, num2 : num1 * num2
+
+lamba 쓰는 법을 공부해야할 듯. 그리고 주어진 대로 풀지만 말고, 최대한 간소화 해보기!
+
+"""
