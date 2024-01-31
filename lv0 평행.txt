@@ -1,0 +1,29 @@
+
+def solution(dots):
+    decline = lambda a, b : (a[1]-b[1]) /(a[0]-b[0]) 
+    answer = 0
+
+    if decline(dots[0], dots[1])==decline(dots[2], dots[3]) or decline(dots[0], dots[2])==decline(dots[1], dots[3]) or decline(dots[0], dots[3])==decline(dots[1], dots[2]):
+        answer = 1
+
+    return answer
+
+"""
+람다 한줄로 될 것 같아서 어떻게든 해볼려다가 결국 위와 같은 코드가 되버렸다만.. 그래도 람다로 해서 못알아보는 코드보다는
+알아 볼 수 있는 깔끔한게 더 좋다고 해서 위안을 얻는게 맞나 싶네.. 하핳
+
+그것보다도
+
+def solution(dots):
+    [[x1, y1], [x2, y2], [x3, y3], [x4, y4]]=dots
+    answer1 = ((y1-y2)*(x3-x4) == (y3-y4)*(x1-x2))
+    answer2 = ((y1-y3)*(x2-x4) == (y2-y4)*(x1-x3))
+    answer3 = ((y1-y4)*(x2-x3) == (y2-y3)*(x1-x4))
+    return 1 if answer1 or answer2 or answer3 else 0
+
+이게 너무 깔끔해서 좋아보임. 파이썬은 이것도 되는건가..? 아니 할당은 둘째치고 나눗셈 그냥 곱셈으로 서로 반대변에 넘긴게
+정말 너무 깔끔하고 에러 날 일도 없고 너무 좋아보임. 
+30분째 서칭해도 구조의 이름을 찾지 못해 fail.. 그냥 파이썬에서는 기본인건가.? 그랬으면 활용해서 나오지 않았을까
+진짜 저거 어떻게 쓰는건지 씹고 뜯고 맛보고 즐겨서 자주 쓰고싶은데,,, 구조 이름을 모르겠네...
+질문 해놨으니 답 오면 다시 봐야지
+""'
