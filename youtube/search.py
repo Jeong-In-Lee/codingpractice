@@ -1,5 +1,6 @@
 '''
 https://youtu.be/7C9RgOcvkvo?si=awRQ9v_2emGyVw4P
+영상 학습 및 실습
 '''
 
 # 유클리드 호재법 GCD
