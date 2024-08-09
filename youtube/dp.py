@@ -23,7 +23,7 @@ def makeOne():
     dp = [0 for _ in range(X + 1)]
 
     for i in range(2, X + 1):
-        dp[i] = d[i - 1] + 1
+        dp[i] = dp[i - 1] + 1
 
         if i % 2 == 0:
             dp[i] = min(dp[i], dp[i // 2] + 1)
@@ -63,6 +63,96 @@ def efficientMoney():
 def goldGang():
     T = int(input())
     for testcase in range(T):
-        N, M = map(int, input().slit())
+        N, M = map(int, input().split())
         temp = list(map(int, input().split()))
         d = [temp[i : i + M] for i in range(0, len(temp), M)]
+        dSum = [[0 for _ in range(M)] for _ in range(N)]
+
+        for i in range(N):
+            dSum[i][0] = d[i][0]
+
+        for col in range(1, M):
+            for row in range(N):
+                if row == 0:
+                    dSum[row][col] = (
+                        max(
+                            dSum[row][col - 1],
+                            dSum[row + 1][col - 1],
+                        )
+                        + d[row][col]
+                    )
+                elif row == (N - 1):
+                    dSum[row][col] = (
+                        max(
+                            dSum[row - 1][col - 1],
+                            dSum[row][col - 1],
+                        )
+                        + d[row][col]
+                    )
+                else:
+                    dSum[row][col] = (
+                        max(
+                            dSum[row - 1][col - 1],
+                            dSum[row][col - 1],
+                            dSum[row + 1][col - 1],
+                        )
+                        + d[row][col]
+                    )
+        answer = 0
+        for m in range(N):
+            answer = max(answer, dSum[m][M - 1])
+        print(answer)
+
+
+# goldGang()
+
+
+def subSodier(new):
+    before = new[0]
+    count = 0
+    for i in range(1, len(new)):
+        if before <= new[i]:
+            count += 1
+        else:
+            before = new[i]
+    return count
+
+
+def soldier():
+    N = int(input())
+    people = list(map(int, input().split()))
+    dp = [0 for _ in range(N)]
+    index = []
+
+    dp[N - 1] = N - 1
+    for i in range(N - 2, -1, -1):
+        new = people[i:]
+        newN = len(new)
+        for num in index:
+            del new[newN - num]
+        if dp[i + 1] > (subSodier(new) + i + len(index)):
+            dp[i] = subSodier(new) + i + len(index)
+        else:
+            dp[i] = dp[i + 1]
+            index.append(N - i)
+        print(f"index : {index} // dp[{i}] : {dp[i]} // new : {new}")
+
+    return dp[0]
+
+
+def answerSoldier():
+    N = int(input())
+    people = list(map(int, input().split()))
+
+    people.reverse()
+
+    dp = [1 for _ in range(N)]
+
+    for i in range(1, N):
+        for j in range(0, i):
+            if people[j] < people[i]:
+                dp[i] = max(dp[i], dp[j] + 1)
+    return n - max(dp)
+
+
+# print(soldier())
