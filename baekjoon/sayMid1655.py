@@ -25,8 +25,8 @@ def firstTry():
             print(temp[0])
 
 
-# nlog n 인데 이게 시간초과라니..
-def secondTry():
+# sys로 input 바꾸고 통과
+def answer():
     N = int(input())
     leftHeap = [] #최대힙
     rightHeap = [] #최소힙
