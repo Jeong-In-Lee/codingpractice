@@ -1,2 +1,1 @@
-### 각 문제 풀이 일기 블로그 링크
-https://velog.io/@jeong_/series/%EC%BD%94%EB%94%A9-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%A4%80%EB%B9%84
+### 여러 사이트에서 푼 코딩 테스트 문제를 모아두는 곳입니다.
